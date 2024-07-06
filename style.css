@@ -57,3 +57,10 @@ button:hover{
     background-color: #470066;
     letter-spacing: 1px ;
 }
+.btnSearch{
+    display: flex;
+    justify-content: space-between;
+}
+.btnSearch button{
+    width: 45%;
+}
