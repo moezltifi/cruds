@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: #222;
+    background-color: #333;
     color: #eee;
     font-family: system-ui;
 }
@@ -15,4 +15,45 @@ body{
     text-align: center;
     text-transform: uppercase;
     margin: 10px 0;
+}
+input{
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: #222;
+    margin: 4px;
+    border-radius: 5px;
+    padding: 4px;
+    color: #fff;
+}
+input:focus{
+    background-color: #111;
+    transform: scale(1.1);
+}
+.price input{
+    width: 20%;
+}
+#total{
+    background-color: #a00;
+    padding: 5px 2px;
+    border-radius: 5px;
+}
+#total::before{
+    content: "Total: ";
+}
+button{
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #47005f;
+    color: #fff;
+    transition: 0.5s;
+    text-transform: capitalize;
+}
+button:hover{
+    background-color: #470066;
+    letter-spacing: 1px ;
 }
