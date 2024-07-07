@@ -8,6 +8,7 @@ let total = document.getElementById("total")
 let category = document.getElementById("category")
 let submit = document.getElementById("submit")
 let tbody = document.getElementById("tbody")
+let deleteItem = document.getElementById("delete")
 
 function getTotal(){
     if((price.value !='') && (ads.value !='') && (taxes.value !='')){
@@ -68,9 +69,15 @@ function showData(){
                     <td>${dataPro[i].total}</td>
                     <td>${dataPro[i].category}</td>
                     <td><button id="update">update</button></td>
-                    <td><button id="delete">delete</button></td>
+                    <td><button onclick="deleteItems(${i})" id="delete">delete</button></td>
             </tr>`
         }
         tbody.innerHTML= table
 }
-showData()
+showData();
+
+function deleteItems(i) {
+    dataPro.splice(i,1)
+    localStorage.product = JSON.stringify(dataPro)
+    showData();
+}
