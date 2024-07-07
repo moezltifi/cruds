@@ -9,7 +9,7 @@ let category = document.getElementById("category")
 let submit = document.getElementById("submit")
 
 function getTotal(){
-    if(price.value !=''){
+    if((price.value !='') && (ads.value !='') && (taxes.value !='')){
         total.innerHTML=Number(price.value) + Number(taxes.value) + Number(ads.value) - Number(discount.value)
         total.style.background= "#040";
     }
@@ -27,6 +27,7 @@ if(localStorage.product != null){
 }
 
 submit.onclick = function(){
+    if((price.value !='') && (ads.value !='') && (taxes.value !='') && (title.value !='') && (category.value !='')){
     let newPro ={
         title:title.value,
         price:price.value,
@@ -39,5 +40,14 @@ submit.onclick = function(){
     }
     dataPro.push(newPro)
     localStorage.setItem('product', JSON.stringify(dataPro))
-    console.log(dataPro);
+        title.value = ''
+        price.value = ''
+        taxes.value = ''
+        ads.value = ''
+        discount.value = ''
+        total.innerHTML = ''
+        total.style.background= "#a00d02";
+        count.value = ''
+        category.value = ''
+}
 }
