@@ -18,3 +18,26 @@ function getTotal(){
         total.style.background= "#a00d02";
     }
 }
+
+let dataPro ;
+if(localStorage.product != null){
+    dataPro = JSON.parse(localStorage.product)
+}else{
+ dataPro = [];
+}
+
+submit.onclick = function(){
+    let newPro ={
+        title:title.value,
+        price:price.value,
+        taxes:taxes.value,
+        ads:ads.value,
+        discount:discount.value,
+        total:total.innerHTML,
+        count:count.value,
+        category:category.value
+    }
+    dataPro.push(newPro)
+    localStorage.setItem('product', JSON.stringify(dataPro))
+    console.log(dataPro);
+}
