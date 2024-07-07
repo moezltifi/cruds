@@ -41,7 +41,13 @@ submit.onclick = function(){
         count:count.value,
         category:category.value
     }
+    if(newPro.count > 1){
+        for(let i=0; i< newPro.count; i++){
+            dataPro.push(newPro)
+        }
+    }else{
     dataPro.push(newPro)
+    }
     localStorage.setItem('product', JSON.stringify(dataPro))
         title.value = ''
         price.value = ''
