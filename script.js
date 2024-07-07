@@ -8,7 +8,15 @@ let total = document.getElementById("total")
 let category = document.getElementById("category")
 let submit = document.getElementById("submit")
 let tbody = document.getElementById("tbody")
-let deleteItem = document.getElementById("delete")
+let btnDelete = document.getElementById("btnDelete")
+
+let dataPro = [];
+
+if (localStorage.product) {
+    dataPro = JSON.parse(localStorage.product);
+}
+
+showData();
 
 function getTotal(){
     if((price.value !='') && (ads.value !='') && (taxes.value !='')){
@@ -19,13 +27,6 @@ function getTotal(){
         total.innerHTML=''
         total.style.background= "#a00d02";
     }
-}
-
-let dataPro ;
-if(localStorage.product != null){
-    dataPro = JSON.parse(localStorage.product)
-}else{
- dataPro = [];
 }
 
 submit.onclick = function(){
@@ -73,11 +74,21 @@ function showData(){
             </tr>`
         }
         tbody.innerHTML= table
+        if (dataPro.length > 0) {
+            btnDelete.style.display = "block";
+        } else {
+            btnDelete.style.display = "none";
+        }
 }
 showData();
 
 function deleteItems(i) {
     dataPro.splice(i,1)
     localStorage.product = JSON.stringify(dataPro)
+    showData();
+}
+function deleteAllItems() {
+    localStorage.removeItem('product');
+    dataPro = [];
     showData();
 }
