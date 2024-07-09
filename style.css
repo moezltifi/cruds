@@ -24,12 +24,13 @@ input{
     background-color: #222;
     margin: 4px;
     border-radius: 5px;
-    padding: 4px;
+    padding: 7px;
     color: #fff;
+    transition: all 1s ease;
 }
 input:focus{
     background-color: #111;
-    transform: scale(1.1);
+    transform: scale(1.04);
 }
 .price input{
     width: 20%;
