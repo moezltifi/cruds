@@ -1,64 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRUDS</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="crud">
+      <div class="head">
+        <h1>CRUDS</h1>
+        <p>product management system</p>
+      </div>
 
-        <div class="head">
-            <h1>CRUDS</h1>
-            <p>product management system</p>
+      <div class="inputs">
+        <input type="text" placeholder="Title" id="title" />
+        <div class="price">
+          <input
+            onkeyup="getTotal()"
+            onmouseup="getTotal()"
+            type="number"
+            placeholder="Price"
+            id="price"
+          />
+          <input
+            onkeyup="getTotal()"
+            onmouseup="getTotal()"
+            type="number"
+            placeholder="Taxes"
+            id="taxes"
+          />
+          <input
+            onkeyup="getTotal()"
+            onmouseup="getTotal()"
+            type="number"
+            placeholder="Ads"
+            id="ads"
+          />
+          <input
+            onkeyup="getTotal()"
+            onmouseup="getTotal()"
+            type="number"
+            placeholder="Discount"
+            id="discount"
+          />
+          <small id="total"></small>
         </div>
-        
-        <div class="inputs">
-            <input type="text" placeholder="Title" id="title">
-            <div class="price">
-                <input onkeyup="getTotal()" onmouseup="getTotal()" type="number" placeholder="Price" id="price">
-                <input onkeyup="getTotal()" onmouseup="getTotal()" type="number" placeholder="Taxes" id="taxes">
-                <input onkeyup="getTotal()" onmouseup="getTotal()" type="number" placeholder="Ads" id="ads">
-                <input onkeyup="getTotal()" onmouseup="getTotal()" type="number" placeholder="Discount" id="discount">
-                <small id="total"></small>
-            </div>
-            <input type="number" placeholder="Count" id="count">
-            <input type="text" placeholder="Category" id="category">
-            <button id="submit">create</button>
-        
-        </div>
+        <input type="number" placeholder="Count" id="count" />
+        <input type="text" placeholder="Category" id="category" />
+        <button id="submit">create</button>
+      </div>
 
-        <div class="outputs">
-            <div class="searchBlock">
-                <input onkeyup="searchData(this.value)" onmouseover="searchData(this.value)" type="text" id="search" placeholder="search" >
-                <div class="btnSearch">
-                    <button onclick="getSearchMood(this.id)" id="searchTitle">Search By Title</button>
-                    <button onclick="getSearchMood(this.id)" id="searchCategory">Search By Category</button>
-                </div>
-            </div>
-            <div id="deleteAll"> 
-                <button id="btnDelete" onclick="deleteAllItems()">delete All</button>
-            </div>
-            <table>
-                <tr>
-                    <th>id</th>
-                    <th>title</th>
-                    <th>price</th>
-                    <th>taxes</th>
-                    <th>ads</th>
-                    <th>discount</th>
-                    <th>total</th>
-                    <th>category</th>
-                    <th>update</th>
-                    <th>delete</th>
-                </tr>
-
-                <tbody id="tbody"> </tbody>
-            </table>
+      <div class="outputs">
+        <div class="searchBlock">
+          <input
+            onkeyup="searchData(this.value)"
+            onmouseover="searchData(this.value)"
+            type="text"
+            id="search"
+            placeholder="search"
+          />
+          <div class="btnSearch">
+            <button onclick="getSearchMood(this.id)" id="searchTitle">
+              Search By Title
+            </button>
+            <button onclick="getSearchMood(this.id)" id="searchCategory">
+              Search By Category
+            </button>
+          </div>
         </div>
+        <div id="deleteAll">
+          <button id="btnDelete" onclick="deleteAllItems()">delete All</button>
+        </div>
+        <div class="table">
+          <table>
+            <tr>
+              <th>id</th>
+              <th>title</th>
+              <th>price</th>
+              <th>taxes</th>
+              <th>ads</th>
+              <th>discount</th>
+              <th>total</th>
+              <th>category</th>
+              <th>update</th>
+              <th>delete</th>
+            </tr>
+
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
