@@ -6,12 +6,27 @@ let count = document.getElementById("count")
 let discount = document.getElementById("discount")
 let total = document.getElementById("total")
 let category = document.getElementById("category")
-let submit = document.getElementById("submit")
+var submit = document.getElementById("submit")
 let tbody = document.getElementById("tbody")
 let btnDelete = document.getElementById("btnDelete")
+let tmp;
+
+let mode = 'create'
+
+
+function clearForm() {
+    title.value = '';
+    price.value = '';
+    taxes.value = '';
+    ads.value = '';
+    discount.value = '';
+    total.innerHTML = '';
+    total.style.background = "#a00d02";
+    count.value = '';
+    category.value = '';
+}
 
 let dataPro = [];
-
 if (localStorage.product) {
     dataPro = JSON.parse(localStorage.product);
 }
@@ -41,6 +56,7 @@ submit.onclick = function(){
         count:count.value,
         category:category.value
     }
+    if(mode === 'create'){
     if(newPro.count > 1){
         for(let i=0; i< newPro.count; i++){
             dataPro.push(newPro)
@@ -48,20 +64,17 @@ submit.onclick = function(){
     }else{
     dataPro.push(newPro)
     }
+}else{
+    dataPro[tmp] = newPro ;
+    mode = 'create'
+    submit.innerHTML = 'create'
+    count.style.display = 'block'
+}
     localStorage.setItem('product', JSON.stringify(dataPro))
-        title.value = ''
-        price.value = ''
-        taxes.value = ''
-        ads.value = ''
-        discount.value = ''
-        total.innerHTML = ''
-        total.style.background= "#a00d02";
-        count.value = ''
-        category.value = ''
+    clearForm();
 }
 showData()
 }
-
 function showData(){
     let table =''
     for(let i=0; i<dataPro.length; i++){
@@ -75,7 +88,7 @@ function showData(){
                     <td>${dataPro[i].discount}</td>
                     <td>${dataPro[i].total}</td>
                     <td>${dataPro[i].category}</td>
-                    <td><button id="update">update</button></td>
+                    <td><button onclick="updateItems(${i})" id="update">update</button></td>
                     <td><button onclick="deleteItems(${i})" id="delete">delete</button></td>
             </tr>`
         }
@@ -97,4 +110,20 @@ function deleteAllItems() {
     localStorage.removeItem('product');
     dataPro = [];
     showData();
+}
+function updateItems(i) {
+    title.value = dataPro[i].title;
+    price.value = dataPro[i].price;
+    taxes.value = dataPro[i].taxes;
+    ads.value = dataPro[i].ads;
+    discount.value = dataPro[i].discount;
+    category.value = dataPro[i].category;
+    count.style.display="none"
+    submit.innerHTML="Update"
+    getTotal()
+    mode = 'update'
+    tmp = i
+    scroll({
+        top:0
+    })
 }
