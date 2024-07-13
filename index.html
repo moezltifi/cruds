@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRUDS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="crud">
+        <i id="i" onclick="lightMode()" class="fa fa-moon-o" style="font-size:36px"></i>
       <div class="head">
         <h1>CRUDS</h1>
         <p>product management system</p>
@@ -55,7 +57,6 @@
         <div class="searchBlock">
           <input
             onkeyup="searchData(this.value)"
-            onmouseover="searchData(this.value)"
             type="text"
             id="search"
             placeholder="search"

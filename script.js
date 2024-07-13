@@ -39,7 +39,7 @@ function getTotal() {
       Number(taxes.value) +
       Number(ads.value) -
       Number(discount.value);
-    total.style.background = "#040";
+    total.style.background = "#070";
   } else {
     total.innerHTML = "";
     total.style.background = "#a00d02";
@@ -184,4 +184,19 @@ function searchData(value) {
   }
   tbody.innerHTML = table;
 }
+function lightMode() {
+    var inputs = document.getElementsByTagName("input");
+    var buttons = document.getElementsByTagName("button");
+    var smalls = document.getElementsByTagName("small");
+    document.body.classList.toggle("body");
 
+    function toggleClassOnElements(elements, className) {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.toggle(className);
+      }
+    }
+  
+    toggleClassOnElements(inputs, "input");
+    toggleClassOnElements(buttons, "button");
+    toggleClassOnElements(smalls, "small");
+  }

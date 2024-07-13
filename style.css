@@ -26,7 +26,7 @@ input {
   border-radius: 5px;
   padding: 7px;
   color: #fff;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 input:focus {
   background-color: #111;
@@ -83,4 +83,29 @@ td {
 }
 #deleteAll {
   margin: 20px 0;
+}
+
+
+.input {
+    background-color: #dddddd;
+    color: #111;
+}
+.input:focus {
+    background-color: #bbb;
+    transform: scale(1.04);
+}
+
+.body {
+    background-color: white;
+    color: #111;
+}
+.button {
+    background-color: #9b02ce !important;
+}
+.button:hover{
+    background-color: #9b02bb !important;
+}
+
+.small {
+color: #f3f3f3;
 }
