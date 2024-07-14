@@ -126,7 +126,6 @@ color: #f3f3f3;
     to {left: 70%; transform: rotate(360deg);}
 }
 
-/* The element to apply the animation to */
 #sun {
     position: absolute;
     left: 10%;
@@ -140,7 +139,6 @@ color: #f3f3f3;
     to {left: 10%; transform: rotate(0deg);}
 }
 
-/* The element to apply the animation to */
 #moon {
     position: absolute;
     left: 70%;
@@ -148,8 +146,61 @@ color: #f3f3f3;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
+#sun, #moon {
+    font-size: 36px;
+}
 @media (max-width: 600px) {
     #sun, #moon {
-        font-size: 20px;
+        font-size: 25px;
+    }
+    #lightDarkModeBtn{
+        height: 40px;
+    }
+    @keyframes sun {
+        from {left: 10%; transform: rotate(0deg);}
+        to {left: 65%; transform: rotate(360deg);}
+    }
+    #sun {
+        position: absolute;
+        left: 10%;
+        animation-name: sun;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes moon {
+        from {left: 65%; transform: rotate(360deg);}
+        to {left: 10%; transform: rotate(0deg);}
+    }
+    #moon {
+        position: absolute;
+        left: 65%;
+        animation-name: moon;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+}
+@media (max-width: 400px) {
+    @keyframes sun {
+        from {left: 10%; transform: rotate(0deg);}
+        to {left: 50%; transform: rotate(360deg);}
+    }
+    #sun {
+        position: absolute;
+        left: 10%;
+        animation-name: sun;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    
+    @keyframes moon {
+        from {left: 50%; transform: rotate(360deg);}
+        to {left: 10%; transform: rotate(0deg);}
+    }
+    #moon {
+        position: absolute;
+        left: 50%;
+        animation-name: moon;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
     }
 }

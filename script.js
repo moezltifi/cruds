@@ -209,13 +209,13 @@ function setMode(mode) {
         applyClassOnElements(inputs, "input", "add");
         applyClassOnElements(buttons, "button", "add");
         applyClassOnElements(smalls, "small", "add");
-        lightDarkMode.innerHTML = `<i id="sun" class="fa fa-sun-o" style="font-size:36px"></i>`;
+        lightDarkMode.innerHTML = `<i id="sun" class="fa fa-sun-o"></i>`;
     } else {
         document.body.classList.remove("body");
         applyClassOnElements(inputs, "input", "remove");
         applyClassOnElements(buttons, "button", "remove");
         applyClassOnElements(smalls, "small", "remove");
-        lightDarkMode.innerHTML = `<i id="moon" class="fa fa-moon-o" style="font-size:36px"></i>`;
+        lightDarkMode.innerHTML = `<i id="moon" class="fa fa-moon-o"></i>`;
     }
 }
 
