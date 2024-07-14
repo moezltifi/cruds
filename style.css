@@ -109,3 +109,47 @@ td {
 .small {
 color: #f3f3f3;
 }
+#lightDarkModeBtn {
+    padding: 6px;
+    width: 20%;
+    height: 50px;
+    position: absolute;
+    left: 10%;
+    display: flex;
+    background-color: #aaa !important;
+    transition: right 2s;
+    z-index: 1;
+    cursor: pointer;
+}
+@keyframes sun {
+    from {left: 10%; transform: rotate(0deg);}
+    to {left: 70%; transform: rotate(360deg);}
+}
+
+/* The element to apply the animation to */
+#sun {
+    position: absolute;
+    left: 10%;
+    animation-name: sun;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moon {
+    from {left: 70%; transform: rotate(360deg);}
+    to {left: 10%; transform: rotate(0deg);}
+}
+
+/* The element to apply the animation to */
+#moon {
+    position: absolute;
+    left: 70%;
+    animation-name: moon;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@media (max-width: 600px) {
+    #sun, #moon {
+        font-size: 20px;
+    }
+}

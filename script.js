@@ -184,19 +184,63 @@ function searchData(value) {
   }
   tbody.innerHTML = table;
 }
-function lightMode() {
+
+let pageMode = localStorage.getItem("mode") || "dark";
+let lightDarkModeContent = localStorage.getItem("lightDarkModeContent");
+
+function applyClassOnElements(elements, className, action) {
+    for (let i = 0; i < elements.length; i++) {
+        if (action === "add") {
+            elements[i].classList.add(className);
+        } else {
+            elements[i].classList.remove(className);
+        }
+    }
+}
+
+function setMode(mode) {
     var inputs = document.getElementsByTagName("input");
     var buttons = document.getElementsByTagName("button");
     var smalls = document.getElementsByTagName("small");
-    document.body.classList.toggle("body");
+    var lightDarkMode = document.getElementById("lightDarkModeBtn");
 
-    function toggleClassOnElements(elements, className) {
-      for (var i = 0; i < elements.length; i++) {
-        elements[i].classList.toggle(className);
-      }
+    if (mode === "light") {
+        document.body.classList.add("body");
+        applyClassOnElements(inputs, "input", "add");
+        applyClassOnElements(buttons, "button", "add");
+        applyClassOnElements(smalls, "small", "add");
+        lightDarkMode.innerHTML = `<i id="sun" class="fa fa-sun-o" style="font-size:36px"></i>`;
+    } else {
+        document.body.classList.remove("body");
+        applyClassOnElements(inputs, "input", "remove");
+        applyClassOnElements(buttons, "button", "remove");
+        applyClassOnElements(smalls, "small", "remove");
+        lightDarkMode.innerHTML = `<i id="moon" class="fa fa-moon-o" style="font-size:36px"></i>`;
     }
-  
-    toggleClassOnElements(inputs, "input");
-    toggleClassOnElements(buttons, "button");
-    toggleClassOnElements(smalls, "small");
-  }
+}
+
+function lightMode() {
+    pageMode = pageMode === "dark" ? "light" : "dark";
+    setMode(pageMode);
+
+    localStorage.setItem("mode", pageMode);
+    localStorage.setItem("lightDarkModeContent", document.getElementById("lightDarkModeBtn").innerHTML);
+}
+
+window.onload = function() {
+    if (lightDarkModeContent) {
+        document.getElementById("lightDarkModeBtn").innerHTML = lightDarkModeContent;
+    }
+    setMode(pageMode);
+};
+document.addEventListener('mouseover', function() {
+    var inputs = document.getElementsByTagName("input");
+    var buttons = document.getElementsByTagName("button");
+    var smalls = document.getElementsByTagName("small");
+
+    if (pageMode === "light") {
+        applyClassOnElements(buttons, "button", "add");
+    } else {
+        applyClassOnElements(buttons, "button", "remove");
+    }
+});
