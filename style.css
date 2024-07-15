@@ -154,6 +154,7 @@ color: #f3f3f3;
         font-size: 25px;
     }
     #lightDarkModeBtn{
+        width: 20%;
         height: 40px;
     }
     @keyframes sun {
