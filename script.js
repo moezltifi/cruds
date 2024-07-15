@@ -9,9 +9,11 @@ let category = document.getElementById("category");
 var submit = document.getElementById("submit");
 let tbody = document.getElementById("tbody");
 let btnDelete = document.getElementById("btnDelete");
-let tmp;
-
+let pageMode = localStorage.getItem("mode") || "dark";
+let lightDarkModeContent = localStorage.getItem("lightDarkModeContent");
+let searchMood = "title";
 let mode = "create";
+let tmp;
 
 function clearForm() {
   title.value = "";
@@ -29,7 +31,6 @@ let dataPro = [];
 if (localStorage.product) {
   dataPro = JSON.parse(localStorage.product);
 }
-
 showData();
 
 function getTotal() {
@@ -83,6 +84,7 @@ submit.onclick = function () {
   }
   showData();
 };
+
 function showData() {
   let table = "";
   for (let i = 0; i < dataPro.length; i++) {
@@ -113,11 +115,13 @@ function deleteItems(i) {
   localStorage.product = JSON.stringify(dataPro);
   showData();
 }
+
 function deleteAllItems() {
   localStorage.removeItem("product");
   dataPro = [];
   showData();
 }
+
 function updateItems(i) {
   title.value = dataPro[i].title;
   price.value = dataPro[i].price;
@@ -134,7 +138,7 @@ function updateItems(i) {
     top: 0,
   });
 }
-let searchMood = "title";
+
 function getSearchMood(id) {
   if (id === "searchTitle") {
     searchMood = "title";
@@ -145,6 +149,7 @@ function getSearchMood(id) {
   }
   search.focus();
 }
+
 function searchData(value) {
   let table = "";
   if (searchMood == "title") {
@@ -184,10 +189,7 @@ function searchData(value) {
   }
   tbody.innerHTML = table;
 }
-
-let pageMode = localStorage.getItem("mode") || "dark";
-let lightDarkModeContent = localStorage.getItem("lightDarkModeContent");
-
+ 
 function applyClassOnElements(elements, className, action) {
     for (let i = 0; i < elements.length; i++) {
         if (action === "add") {
@@ -209,7 +211,8 @@ function setMode(mode) {
         applyClassOnElements(inputs, "input", "add");
         applyClassOnElements(buttons, "button", "add");
         applyClassOnElements(smalls, "small", "add");
-        lightDarkMode.innerHTML = `<i id="sun" class="fa fa-sun-o"></i>`;
+        lightDarkMode.innerHTML = `<i id="sun" class="material-icons">sunny</i>
+`;
     } else {
         document.body.classList.remove("body");
         applyClassOnElements(inputs, "input", "remove");
@@ -233,14 +236,13 @@ window.onload = function() {
     }
     setMode(pageMode);
 };
-document.addEventListener('mouseover', function() {
-    var inputs = document.getElementsByTagName("input");
+document.addEventListener('click', toggleButtonClass);
+document.addEventListener('keyup', toggleButtonClass);
+function toggleButtonClass() {
     var buttons = document.getElementsByTagName("button");
-    var smalls = document.getElementsByTagName("small");
-
     if (pageMode === "light") {
         applyClassOnElements(buttons, "button", "add");
     } else {
         applyClassOnElements(buttons, "button", "remove");
     }
-});
+}

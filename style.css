@@ -100,10 +100,10 @@ td {
     color: #111;
 }
 .button {
-    background-color: #9b02ce !important;
+    background-color: #9b02dd !important;
 }
 .button:hover{
-    background-color: #9b02bb !important;
+    background-color: #9b02ee !important;
 }
 
 .small {
@@ -111,7 +111,7 @@ color: #f3f3f3;
 }
 #lightDarkModeBtn {
     padding: 6px;
-    width: 20%;
+    width: 130px;
     height: 50px;
     position: absolute;
     left: 10%;
